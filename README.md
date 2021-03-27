@@ -19,7 +19,7 @@ RL Q learning to imitate the playing of game
 - State should consist of what parameters
     - Like the current points also? (but it doesn't matter if you have to maximise the future points)
 - Actions - count differs for each state
-    - 010101100111 ===> 1 line is there.. 5 zeros -> 1,3,5,8,9 actions available
+    - 010101100111 ===> 1 line is already there.. 5 zeros -> 1,3,5,8,9 actions available
     - 1 to 12 from left 
 - 4096 entries -- binary encoding or bitstring
 - Table 
@@ -32,7 +32,7 @@ RL Q learning to imitate the playing of game
     - adv : reward is 0 for other cases
     - OPTIONAL: you lose one box -1 reward, you gain one box +1 reward  // short term benefit
     - OPTIONAL: ONLY reward, not penalty
-- ####Actions
+- #### Actions
     - Current state, possible actions == which has the highest Q value??
     - Dis: Exploitation... All states not visited
     - Simple learner..: visit count maintained.. and find which is less..
@@ -78,20 +78,34 @@ RL Q learning to imitate the playing of game
     - update QTABLE with rewards and penalties
 
 #### check if new box 
+```
 (box,newstate){
     for  i = 0 to 3:
         i==0 and box[i]==0:
             if newstate 1378 set: 
                 update
 }
+```
 
-#### update memory 
--  
+#### update memory (player, {state, action, nextstate, reward})
+- for player's Memory table
+    - create new row 
+    - add values for each column
 
 #### update Qtable
-- 
+- // at the end of game 
+- for each player update Qtable depending on whether he is winner or loser or tie
+- winner update 
+- for each entry in memorytable(s,a,ns,rwd) in reverse:
+    - UPDATE Q value as 
+        `Q(s,a) = (1-LR)*Q(s,a)+LR*(rwd+DR*MAX(Q(ns,all a's)))`
 
-#### Make MOVE
+
+#### Make MOVE / choose action (possible actions, current state) => one action from list
+- Take care of exploration and exploitation
+- Random or simple or QLearner 
+- ULTIMATELY USE ONLY QLEARNER TO EVALUATE PERFORMANCE
+
 
 
 
