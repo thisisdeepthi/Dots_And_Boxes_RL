@@ -88,23 +88,23 @@ RL Q learning to imitate the playing of game
 ```
 
 #### update memory (player, {state, action, nextstate, reward})
-- for player's Memory table
-    - create new row 
-    - add values for each column
+    - for player's Memory table
+        - create new row 
+        - add values for each column
 
 #### update Qtable
-- // at the end of game 
-- for each player update Qtable depending on whether he is winner or loser or tie
-- winner update 
-- for each entry in memorytable(s,a,ns,rwd) in reverse:
-    - UPDATE Q value as 
-        `Q(s,a) = (1-LR)*Q(s,a)+LR*(rwd+DR*MAX(Q(ns,all a's)))`
+    - // at the end of game 
+    - for each player update Qtable depending on whether he is winner or loser or tie
+    - winner update 
+    - for each entry in memorytable(s,a,ns,rwd) in reverse:
+        - UPDATE Q value as 
+            `Q(s,a) = (1-LR)*Q(s,a)+LR*(rwd+DR*MAX(Q(ns,all a's)))`
 
 
 #### Make MOVE / choose action (possible actions, current state) => one action from list
-- Take care of exploration and exploitation
-- Random or simple or QLearner 
-- ULTIMATELY USE ONLY QLEARNER TO EVALUATE PERFORMANCE
+    - Take care of exploration and exploitation
+    - Random or simple or QLearner 
+    - ULTIMATELY USE ONLY QLEARNER TO EVALUATE PERFORMANCE
 
 
 
